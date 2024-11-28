@@ -1,0 +1,64 @@
+{
+	"simulation": {
+		"maxIts"      : 500,
+		"maxMovesInt" : 4,
+		"maxMovesIcm" : 100,
+		"maxMovesScm" : 100,
+		"maxRecsLct"  : 100,
+		"maxRecsInt"  : 100,
+		"maxRecsIcm"  : 50,
+		"maxRecsScm"  : 50,
+		"maxTruncsInt": 20,
+		"maxTruncsIcm": 5,
+		"probRedoLct" : 0.5,
+		"probRedoInt" : 0.0,
+		"probRedoIcm" : 0.0,
+		"precision"   : 1,
+		"reset"       : 0,
+		"sizePattern" : 2
+	},
+	"objectTypes": [
+		{"name": "disk", "actions": [], "properties": ["diameter"]}
+	],
+	"slotTypes": [
+		{"name": "channel", "numberOfLayers": 4, "ordered": 0, "gradientAsc": [], "gradientDesc": [], "noNegSum": [], "noPosSum": []},
+		{"name": "pin"    , "numberOfLayers": 4, "ordered": 1, "gradientAsc": [], "gradientDesc": [], "noNegSum": [], "noPosSum": []},
+		{"name": "pos"    , "numberOfLayers": 1, "ordered": 0, "gradientAsc": [], "gradientDesc": [], "noNegSum": [], "noPosSum": []}
+	],
+	"actions": [
+	],
+	"handles": [
+		{"name": "grab" , "type": "distance", "modulate": "object", "initial": "pin" , "final": "hand"},
+		{"name": "move" , "type": "distance", "modulate": "hand"  , "initial": "pos" , "final": "pos" },
+		{"name": "place", "type": "distance", "modulate": "object", "initial": "hand", "final": "pin" }
+	],
+	"task": {
+		"name"    : "Tower of Hanoi (4 disks, 3 pins)", 
+		"objects" : [
+			{"name": "disk1", "type": "disk", "diameter": 0},
+			{"name": "disk2", "type": "disk", "diameter": 1},
+			{"name": "disk3", "type": "disk", "diameter": 2},
+			{"name": "disk4", "type": "disk", "diameter": 3}
+		],
+		"slots"   : [
+			{"name": "hand", "type": "channel", "holds": [], "score": -1  , "pos": "pos1", "bound": ["pos1", "pos2", "pos3"]}, 
+			{"name": "pin1", "type": "pin"    , "holds": [], "score":  0.3, "pos": "pos1", "bound": ["pos1"]                }, 
+			{"name": "pin2", "type": "pin"    , "holds": [], "score":  0.6, "pos": "pos2", "bound": ["pos2"]                }, 
+			{"name": "pin3", "type": "pin"    , "holds": [], "score":  1  , "pos": "pos3", "bound": ["pos3"]                }, 
+			{"name": "pos1", "type": "pos"    , "holds": [], "score": -1  , "pos": null  , "bound": []                      }, 
+			{"name": "pos2", "type": "pos"    , "holds": [], "score": -1  , "pos": null  , "bound": []                      }, 
+			{"name": "pos3", "type": "pos"    , "holds": [], "score": -1  , "pos": null  , "bound": []                      }
+		],
+		"initial": [
+			{"name": "pin1", "holds": ["disk4", "disk3", "disk2", "disk1"]}
+		],
+		"final": [
+			{"name": "pin3", "holds": ["disk4", "disk3", "disk2", "disk1"]}
+		],
+		"constraints": [
+			{"name": "gradient"   , "pin1": {"gradientDesc": ["diameter"]}, "pin2": {"gradientDesc": ["diameter"]}, "pin3": {"gradientDesc": ["diameter"]}},
+			{"name": "moveOneDisk", "hand": {"numberOfLayers": 1}}
+
+		]
+	}
+}

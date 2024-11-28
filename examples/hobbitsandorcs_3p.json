@@ -1,0 +1,65 @@
+{
+	"simulation": {
+		"maxIts"      : 500,
+		"maxMovesInt" : 4,
+		"maxMovesIcm" : 100,
+		"maxMovesScm" : 100,
+		"maxRecsLct"  : 100,
+		"maxRecsInt"  : 100,
+		"maxRecsIcm"  : 50,
+		"maxRecsScm"  : 50,
+		"maxTruncsInt": 20,
+		"maxTruncsIcm": 5,
+		"probRedoLct" : 0.5,
+		"probRedoInt" : 0.0,
+		"probRedoIcm" : 0.0,
+		"precision"   : 4,
+		"reset"       : 0,
+		"sizePattern" : 2
+	},
+	"objectTypes": [
+		{"name": "hobit", "actions": [], "properties": ["sign"]},
+		{"name": "orc"  , "actions": [], "properties": ["sign"]}
+	],
+	"slotTypes": [
+		{"name": "channel", "numberOfLayers": 6, "ordered": 0, "gradientAsc": [], "gradientDesc": [], "noNegSum": [], "noPosSum": []},
+		{"name": "pin"    , "numberOfLayers": 6, "ordered": 0, "gradientAsc": [], "gradientDesc": [], "noNegSum": [], "noPosSum": []},
+		{"name": "pos"    , "numberOfLayers": 1, "ordered": 0, "gradientAsc": [], "gradientDesc": [], "noNegSum": [], "noPosSum": []}
+	],
+	"actions": [
+	],
+	"handles": [
+		{"name": "grab" , "type": "distance", "modulate": "object", "initial": "pin" , "final": "boat"},
+		{"name": "move" , "type": "distance", "modulate": "boat"  , "initial": "pos" , "final": "pos" },
+		{"name": "place", "type": "distance", "modulate": "object", "initial": "boat", "final": "pin" }
+	],
+	"task": {
+		"name"    : "Hobbits and Orcs (3 pairs)", 
+		"objects" : [
+			{"name": "hobit1", "type": "hobit", "sign":  1},
+			{"name": "hobit2", "type": "hobit", "sign":  1},
+			{"name": "hobit3", "type": "hobit", "sign":  1},
+			{"name": "orc1"  , "type": "orc"  , "sign": -1},
+			{"name": "orc2"  , "type": "orc"  , "sign": -1},
+			{"name": "orc3"  , "type": "orc"  , "sign": -1}
+		],
+		"slots"   : [
+			{"name": "boat", "type": "channel", "holds": [], "score": -1  , "pos": "pos1", "bound": ["pos1", "pos2"]}, 
+			{"name": "pin1", "type": "pin"    , "holds": [], "score":  0.5, "pos": "pos1", "bound": ["pos1"]        }, 
+			{"name": "pin2", "type": "pin"    , "holds": [], "score":  1  , "pos": "pos2", "bound": ["pos2"]        },
+			{"name": "pos1", "type": "pos"    , "holds": [], "score": -1  , "pos": null  , "bound": []              }, 
+			{"name": "pos2", "type": "pos"    , "holds": [], "score": -1  , "pos": null  , "bound": []              }
+		],
+		"initial": [
+			{"name": "pin1", "holds": ["hobit1", "hobit2", "hobit3", "orc1", "orc2", "orc3"]}
+		],
+		"final": [
+			{"name": "pin2", "holds": ["hobit1", "hobit2", "hobit3", "orc1", "orc2", "orc3"]}
+		],
+		"constraints": [
+			{"name": "nonZero" , "pin1": {"noNegSum": ["sign"]}, "pin2": {"noNegSum": ["sign"]}},
+			{"name": "movePair", "boat": {"numberOfLayers": 2}}
+
+		]
+	}
+}

@@ -1,0 +1,91 @@
+Tower of Hanoi (3 disks, 3 pins):
+
+pin1 --(grab  disk1)--> hand
+pos1 --(move  hand )--> pos3
+hand --(place disk1)--> pin3
+pos3 --(move  hand )--> pos1
+pin1 --(grab  disk2)--> hand
+pos1 --(move  hand )--> pos2
+hand --(place disk2)--> pin2
+pos2 --(move  hand )--> pos3
+pin3 --(grab  disk1)--> hand
+pos3 --(move  hand )--> pos2
+hand --(place disk1)--> pin2
+pos2 --(move  hand )--> pos1
+pin1 --(grab  disk3)--> hand
+pos1 --(move  hand )--> pos3
+hand --(place disk3)--> pin3
+pos3 --(move  hand )--> pos2
+pin2 --(grab  disk1)--> hand
+pos2 --(move  hand )--> pos1
+hand --(place disk1)--> pin1
+pos1 --(move  hand )--> pos2
+pin2 --(grab  disk2)--> hand
+pos2 --(move  hand )--> pos3
+hand --(place disk2)--> pin3
+pos3 --(move  hand )--> pos1
+pin1 --(grab  disk1)--> hand
+pos1 --(move  hand )--> pos3
+hand --(place disk1)--> pin3
+
+=> 27 moves
+
+
+Hobbits and Orcs (2 pairs):
+
+pin1 --(grab  hobbit1)--> boat
+pin1 --(grab  hobbit2)--> boat
+pos1 --(move  boat   )--> pos2
+boat --(place hobbit1)--> pin2
+boat --(place hobbit2)--> pin2
+pos2 --(move  boat   )--> pos1
+pin1 --(grab  orc1   )--> boat
+pin1 --(grab  orc2   )--> boat
+pos1 --(move  boat   )--> pos2
+boat --(place orc2   )--> pin2
+boat --(place orc1   )--> pin2
+
+=> 11 moves
+
+
+Hobbits and Orcs (3 pairs):
+
+pin1 --(grab  hobbit1)--> boat
+pin1 --(grab  orc1   )--> boat
+pos1 --(move  boat   )--> pos2
+boat --(place orc1   )--> pin2
+pos2 --(move  boat   )--> pos1
+boat --(place hobbit1)--> pin1
+pin1 --(grab  orc2   )--> boat
+pin1 --(grab  orc3   )--> boat
+pos1 --(move  boat   )--> pos2
+boat --(place orc2   )--> pin2
+pos2 --(move  boat   )--> pos1
+boat --(place orc3   )--> pin1
+pin1 --(grab  hobbit1)--> boat
+pin1 --(grab  hobbit2)--> boat
+pos1 --(move  boat   )--> pos2
+boat --(place hobbit1)--> pin2
+pin2 --(grab  orc2   )--> boat
+pos2 --(move  boat   )--> pos1
+boat --(place orc2   )--> pin1
+pin1 --(grab  hobbit2)--> boat
+pin1 --(grab  hobbit3)--> boat
+pos1 --(move  boat   )--> pos2
+boat --(place hobbit2)--> pin2
+boat --(place hobbit3)--> pin2
+pin2 --(grab  orc1   )--> boat
+pos2 --(move  boat   )--> pos1
+pin1 --(grab  orc2   )--> boat
+pos1 --(move  boat   )--> pos2
+boat --(place orc1   )--> pin2
+boat --(place orc2   )--> pin2
+pin2 --(grab  hobbit3)--> boat
+pos2 --(move  boat   )--> pos1
+pin1 --(grab  orc3   )--> boat
+pos1 --(move  boat   )--> pos2
+boat --(place hobbit3)--> pin2
+boat --(place orc3   )--> pin2
+
+=> 36 moves
+
